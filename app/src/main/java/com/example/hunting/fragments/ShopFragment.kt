@@ -72,7 +72,7 @@ class ShopFragment: Fragment (R.layout.fragment_shop), ProductAdapter.OnItemClic
                         val currentProduct = snap.getValue(Product::class.java)?: return
                         arrayListProducts.add(currentProduct)
                     }
-                    recyclerViewProducts.adapter = ProductAdapter(arrayListProducts, this@ShopFragment)
+                    recyclerViewProducts.adapter = ProductAdapter(requireContext(), arrayListProducts, this@ShopFragment)
                 }
             }
 

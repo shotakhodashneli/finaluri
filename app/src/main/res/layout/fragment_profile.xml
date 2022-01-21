@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/color"
     android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/userAvatar"
@@ -19,5 +21,16 @@
         android:text="მომხმარებელი"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:text="log out"
+        android:textColor="@color/black" />
+
 
 </RelativeLayout>

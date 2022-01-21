@@ -1,18 +1,23 @@
 package com.example.hunting.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.hunting.LoginActivity
 import com.example.hunting.R
 import com.example.hunting.databinding.FragmentProfileBinding
 import com.example.hunting.model.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment: Fragment (R.layout.fragment_profile) {
 
@@ -21,6 +26,7 @@ class ProfileFragment: Fragment (R.layout.fragment_profile) {
 
     private val auth = FirebaseAuth.getInstance()
     private val dbUsers = FirebaseDatabase.getInstance().getReference("users")
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +40,7 @@ class ProfileFragment: Fragment (R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        logoutlistener()
     }
 
     private fun init() {
@@ -58,6 +65,18 @@ class ProfileFragment: Fragment (R.layout.fragment_profile) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+
+
+    private fun logoutlistener (){
+        binding.logOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(requireActivity(),LoginActivity::class.java))
+            requireActivity().finish()
+
+        }
+
     }
 
 }

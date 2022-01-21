@@ -59,7 +59,7 @@ class CartFragment: Fragment (R.layout.fragment_cart), ProductAdapter.OnItemClic
                         val currentItem = snap.value.toString()
                         list.add(currentItem)
                     }
-                    recyclerViewCartProducts.adapter = ProductAdapter(arrayListCartProducts, this@CartFragment)
+                    recyclerViewCartProducts.adapter = ProductAdapter(requireContext(), arrayListCartProducts, this@CartFragment)
                 }
             }
 
@@ -77,7 +77,7 @@ class CartFragment: Fragment (R.layout.fragment_cart), ProductAdapter.OnItemClic
                             arrayListCartProducts.add(currentItem)
                         }
                     }
-                    recyclerViewCartProducts.adapter = ProductAdapter(arrayListCartProducts, this@CartFragment)
+                    recyclerViewCartProducts.adapter = ProductAdapter(requireContext(), arrayListCartProducts, this@CartFragment)
                 }
             }
 

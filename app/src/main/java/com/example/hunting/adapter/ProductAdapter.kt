@@ -1,5 +1,6 @@
 package com.example.hunting.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,17 +8,19 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.hunting.R
 import com.example.hunting.model.Product
 import com.google.android.material.card.MaterialCardView
 
-class ProductAdapter(private val productList: ArrayList<Product>, val listener: OnItemClickListener):
+class ProductAdapter(val context: Context, private val productList: ArrayList<Product>, val listener: OnItemClickListener):
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
         val productName: TextView = view.findViewById(R.id.productTitle)
         val productPrice: TextView = view.findViewById(R.id.productPrice)
         val productDescription: TextView = view.findViewById(R.id.productDescription)
+        val productImage: ImageView = view.findViewById(R.id.productImage)
 
         private val item: MaterialCardView = view.findViewById(R.id.item)
 
@@ -45,6 +48,10 @@ class ProductAdapter(private val productList: ArrayList<Product>, val listener: 
         holder.productName.text = currentProduct.name
         holder.productDescription.text = currentProduct.description
         holder.productPrice.text = currentProduct.price.toString() + "$"
+
+        Glide.with(context)
+            .load(currentProduct.imageUrl)
+            .into(holder.productImage)
 
     }
 
